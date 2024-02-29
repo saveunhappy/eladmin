@@ -64,7 +64,7 @@ public class MenuServiceImpl implements MenuService {
     private static final String YES_STR = "是";
     private static final String NO_STR = "否";
     private static final String BAD_REQUEST = "外链必须以http://或者https://开头";
-    
+
     @Override
     public List<MenuDto> queryAll(MenuQueryCriteria criteria, Boolean isQuery) throws Exception {
         Sort sort = Sort.by(Sort.Direction.ASC, "menuSort");
@@ -74,7 +74,7 @@ public class MenuServiceImpl implements MenuService {
             for (Field field : fields) {
                 //设置对象的访问权限，保证对private的属性的访问
                 field.setAccessible(true);
-                Object val = field.get(criteria);
+                Object val = field.get(criteria);//反射，通过Field然后获取到前端带有传值的查询对象，这样可以获取到前端的值
                 if("pidIsNull".equals(field.getName())){
                     continue;
                 }

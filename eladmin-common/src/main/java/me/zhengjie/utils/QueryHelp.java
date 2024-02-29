@@ -64,7 +64,7 @@ public class QueryHelp {
                     String propName = q.propName();
                     String joinName = q.joinName();
                     String blurry = q.blurry();
-                    String attributeName = isBlank(propName) ? field.getName() : propName;
+                    String attributeName = isBlank(propName) ? field.getName() : propName;//如果没有自定义的名字，那么就根据反射得到的名字
                     Class<?> fieldType = field.getType();
                     Object val = field.get(query);
                     if (ObjectUtil.isNull(val) || "".equals(val)) {
